@@ -1500,13 +1500,6 @@ void __init kmem_cache_init(void)
 
 		ptr = kmalloc(sizeof(struct arraycache_init), GFP_NOWAIT);
 
-// test
-
-    volatile unsigned *bank5_in = (unsigned int*)(0xF8003844);
-    volatile unsigned *bank5_out = (unsigned int*)(0xF8003850);
-     *bank5_out = *bank5_in ^ 0x00000400;
-
-// end test
 		BUG_ON(cpu_cache_get(&cache_cache) != &initarray_cache.cache);
 		memcpy(ptr, cpu_cache_get(&cache_cache),
 		       sizeof(struct arraycache_init));
@@ -2228,10 +2221,18 @@ kmem_cache_create (const char *name, size_t size, size_t align,
 		gfp = GFP_NOWAIT;
 
 	/* Get cache's description obj. */
+    //// Meidh: crashes
 	cachep = kmem_cache_zalloc(&cache_cache, gfp);
 	if (!cachep)
 		goto oops;
 
+// test
+
+    volatile unsigned *bank5_in = (unsigned int*)(0xF8003844);
+    volatile unsigned *bank5_out = (unsigned int*)(0xF8003850);
+     *bank5_out = *bank5_in ^ 0x00000400;
+
+// end test
 #if DEBUG
 	cachep->obj_size = size;
 
