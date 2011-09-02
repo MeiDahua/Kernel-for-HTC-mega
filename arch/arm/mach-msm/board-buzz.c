@@ -1237,7 +1237,7 @@ static void __init buzz_init(void)
 static void __init buzz_fixup(struct machine_desc *desc, struct tag *tags,
 				char **cmdline, struct meminfo *mi)
 {
-	mi->nr_banks = 2;
+	mi->nr_banks = 1;
 	mi->bank[0].start = MSM_LINUX_BASE1;
 	mi->bank[0].node = PHYS_TO_NID(MSM_LINUX_BASE1);
 	mi->bank[0].size = MSM_LINUX_SIZE1;
