@@ -1096,18 +1096,18 @@ static void buzz_config_serial_debug_gpios(void)
 static void __init config_gpios(void)
 {
 	uint32_t config;
-	buzz_config_serial_debug_gpios();
-	config_buzz_camera_off_gpios();
+	//buzz_config_serial_debug_gpios();
+	//config_buzz_camera_off_gpios();
 	/* config display VSYNC gpio */
 	config = PCOM_GPIO_CFG(BUZZ_MDDI_VSYNC, 1, GPIO_INPUT, GPIO_PULL_DOWN, GPIO_2MA);
-	msm_proc_comm(PCOM_RPC_GPIO_TLMM_CONFIG_EX, &config, 0);
+	//msm_proc_comm(PCOM_RPC_GPIO_TLMM_CONFIG_EX, &config, 0);
 }
 
 static struct msm_acpu_clock_platform_data buzz_clock_data = {
-	.acpu_switch_time_us = 50,
+	.acpu_switch_time_us = 20,
 	.max_speed_delta_khz = 256000,
 	.vdd_switch_time_us = 62,
-	.power_collapse_khz = 19200,
+	.power_collapse_khz = 19200000,
 #if defined(CONFIG_TURBO_MODE)
 	.wait_for_irq_khz = 176000,
 #else
@@ -1165,8 +1165,8 @@ static void __init buzz_init(void)
 
 	msm_hw_reset_hook = buzz_reset;
 
-	msm_acpu_clock_init(&buzz_clock_data);
-	perflock_init(&buzz_perflock_data);
+	//msm_acpu_clock_init(&buzz_clock_data);
+	//perflock_init(&buzz_perflock_data);
 	/* adjust GPIOs based on bootloader request */
 
 #if defined(CONFIG_MSM_SERIAL_DEBUGGER)
@@ -1194,12 +1194,12 @@ static void __init buzz_init(void)
 	msm_add_mem_devices(&pmem_setting);
 	msm_init_pmic_vibrator();
 #ifdef CONFIG_MICROP_COMMON
-	//buzz_microp_init();
+	buzz_microp_init();
 #endif
 
-	rc = buzz_init_mmc(system_rev);
-	if (rc)
-		printk(KERN_CRIT "%s: MMC init failure (%d)\n", __func__, rc);
+	//rc = buzz_init_mmc(system_rev);
+	//if (rc)
+	//	printk(KERN_CRIT "%s: MMC init failure (%d)\n", __func__, rc);
 
 	properties_kobj = kobject_create_and_add("board_properties", NULL);
 
