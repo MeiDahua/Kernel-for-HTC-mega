@@ -419,6 +419,13 @@ static noinline void __init_refok rest_init(void)
 	kthreadd_task = find_task_by_pid_ns(pid, &init_pid_ns);
 	unlock_kernel();
 
+// test
+//
+//    volatile unsigned *bank5_in = (unsigned int*)(0xF8003844);
+//    volatile unsigned *bank5_out = (unsigned int*)(0xF8003850);
+//     *bank5_out = *bank5_in ^ 0x00000400;
+//
+// end test
 	/*
 	 * The boot idle thread must execute schedule()
 	 * at least once to get things moving:
@@ -505,13 +512,6 @@ static void __init mm_init(void)
 	page_cgroup_init_flatmem();
 	mem_init();
 	kmem_cache_init(); // problematic :meidh
-// test
-
-    volatile unsigned *bank5_in = (unsigned int*)(0xF8003844);
-    volatile unsigned *bank5_out = (unsigned int*)(0xF8003850);
-     *bank5_out = *bank5_in ^ 0x00000400;
-
-// end test
 	pgtable_cache_init();
 	vmalloc_init();
 }

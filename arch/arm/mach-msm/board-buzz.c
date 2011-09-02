@@ -1197,10 +1197,10 @@ static void __init buzz_init(void)
 	//buzz_microp_init();
 #endif
 
-	//rc = buzz_init_mmc(system_rev);
-	//if (rc)
-	//	printk(KERN_CRIT "%s: MMC init failure (%d)\n", __func__, rc);
-/*
+	rc = buzz_init_mmc(system_rev);
+	if (rc)
+		printk(KERN_CRIT "%s: MMC init failure (%d)\n", __func__, rc);
+
 	properties_kobj = kobject_create_and_add("board_properties", NULL);
 
 	if (properties_kobj)
@@ -1231,7 +1231,7 @@ static void __init buzz_init(void)
 
 	buzz_init_keypad();
 	buzz_panel_init();
-*/
+
 }
 
 static void __init buzz_fixup(struct machine_desc *desc, struct tag *tags,

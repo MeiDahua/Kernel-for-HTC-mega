@@ -557,6 +557,13 @@ static struct msm_mdp_platform_data mdp_pdata = {
 
 int __init buzz_panel_init(void)
 {
+// test
+//
+//    volatile unsigned *bank5_in = (unsigned int*)(0xF8003844);
+//    volatile unsigned *bank5_out = (unsigned int*)(0xF8003850);
+//     *bank5_out = *bank5_in ^ 0x00000400;
+//
+// end test
 	int rc, panel_id;
 	struct panel_data *config = &himax_client_data.panel_conf;
 	struct msm_mddi_bridge_platform_data *bridge_data = &himax_client_data;
