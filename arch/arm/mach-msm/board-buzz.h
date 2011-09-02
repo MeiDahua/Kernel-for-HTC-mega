@@ -30,10 +30,10 @@
 #define MSM_RAM_CONSOLE_BASE            MSM_FB_BASE + MSM_FB_SIZE
 #define MSM_RAM_CONSOLE_SIZE            128 * SZ_1K
 
-#define MSM_PMEM_ADSP_BASE              0x27000000
+#define MSM_PMEM_ADSP_BASE              0x0F000000
 #define MSM_PMEM_ADSP_SIZE              0x00800000
 
-#define MSM_PMEM_CAMERA_BASE            0x27800000
+#define MSM_PMEM_CAMERA_BASE            0x0F800000
 #define MSM_PMEM_CAMERA_SIZE            0x00800000
 
 #define BUZZ_GPIO_USB_ID_PIN          (19)
