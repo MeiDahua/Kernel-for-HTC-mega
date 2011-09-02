@@ -2226,13 +2226,6 @@ kmem_cache_create (const char *name, size_t size, size_t align,
 	if (!cachep)
 		goto oops;
 
-// test
-
-    volatile unsigned *bank5_in = (unsigned int*)(0xF8003844);
-    volatile unsigned *bank5_out = (unsigned int*)(0xF8003850);
-     *bank5_out = *bank5_in ^ 0x00000400;
-
-// end test
 #if DEBUG
 	cachep->obj_size = size;
 
